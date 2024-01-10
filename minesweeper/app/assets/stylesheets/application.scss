@@ -13,3 +13,17 @@
 
  */
 @import "bootstrap";
+@import "partials/*";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.page-container {
+  min-height: 600px;
+}
+
+a {
+  text-decoration: none;
+}

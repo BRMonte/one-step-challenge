@@ -11,6 +11,10 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/partials/navbar' %>
+    <div class="page-container d-flex">
+      <%= yield %>
+    </div>
+    <%= render 'layouts/partials/footer' %>
   </body>
 </html>
