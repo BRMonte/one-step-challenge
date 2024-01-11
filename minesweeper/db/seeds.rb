@@ -7,3 +7,13 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+(1..20).each do |i|
+  Board.new(
+    name: "Board ##{i}",
+    email: "email#{i}@gmail.com",
+    height: 10 + i,
+    width: 10 + i,
+    mines_number: 20 + i
+  ).save
+end
