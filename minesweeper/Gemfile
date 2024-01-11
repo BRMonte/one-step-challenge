@@ -23,6 +23,7 @@ gem "turbo-rails"
 # Project's gems
 gem 'sassc-rails'
 gem 'bootstrap', '~> 5.3.2'
+gem 'kaminari'
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
