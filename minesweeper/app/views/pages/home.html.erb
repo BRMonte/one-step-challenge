@@ -1,2 +1,14 @@
-<div>
+<div class="container d-flex align-items-center justify-content-center vh-100">
+  <div class="d-flex flex-column justify-content-start">
+    <div class="m-5">
+      <h4>Create your minefield</h4>
+      <%= render 'boards/form' %>
+    </div>
+
+    <div class="d-flex flex-column" style="border-top: 1px solid gray;">
+      <h4 style="margin-left: 42px; margin-bottom: -20px; margin-top: 10px;">10 most recent boards</h4>
+      <%= render 'boards/boards' %>
+      <p style="margin-left: 42px; margin-top: -40px;"><%= link_to 'View all generated boards', boards_path %></p>
+    </div>
+  </div>
 </div>
