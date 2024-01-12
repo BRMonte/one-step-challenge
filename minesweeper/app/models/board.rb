@@ -7,6 +7,8 @@ class Board < ApplicationRecord
   validates :mines_number, numericality: { greater_than_or_equal_to: 0 }
   validate :less_mines_than_board_area?
 
+  after_validation :set_slug, only: [:create]
+
   scope :recently_created, -> { order(created_at: :desc).limit(10) }
 
   def self.search(search_param)
@@ -15,11 +17,19 @@ class Board < ApplicationRecord
     Board.where('name ~* :search_param OR email ~* :search_param', search_param: search_param)
   end
 
+  def to_param
+    "#{id}-#{slug}"
+  end
+
   private
 
   def less_mines_than_board_area?
     return if mines_number <= height * width
 
     errors.add(:mines_number, 'must be less than the area of the board')
+  end
+
+  def set_slug
+    self.slug = name.parameterize
   end
 end
