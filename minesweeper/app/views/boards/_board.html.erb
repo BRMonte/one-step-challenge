@@ -1,11 +1,12 @@
 <% if @board %>
   <div class="d-flex">
     <div class="d-flex flex-column gap-3 limited-width">
-      <p class="card-title">Name: <%= @board.name %></p>
-      <p class="card-text">Email: <%= @board.email %></p>
-      <p class="card-text">Height: <%= @board.height %></p>
-      <p class="card-text">Width: <%= @board.width %></p>
-      <p class="card-text">No. of mines: <%= @board.mines_number %></p>
+      <p>Name: <%= @board.name %></p>
+      <p>Email: <%= @board.email %></p>
+      <p>Height: <%= @board.height %></p>
+      <p>Width: <%= @board.width %></p>
+      <p>No. of mines: <%= @board.mines_number %></p>
+      <p>Representation: <%= get_board_technical_representation(@board) %></p>
     </div>
 
     <div class="minefield-container">
