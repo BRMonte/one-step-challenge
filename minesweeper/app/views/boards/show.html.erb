@@ -1,15 +1,14 @@
 <div class="d-flex flex-column">
-  <p style="color: orange; background-color: black; font-style: bold; height: 30px; width: 350px;">
-  refresh the page if the board is not displayed
-  </p>
+  <header class="d-flex">
+    <p class="flex-grow-1" style="color: black; background-color: yellow; font-style: bold; height: 30px; min-width: 350px; margin: 10px;">
+      refresh the page if the board is not displayed
+    </p>
+    <h3 class="w-100 text-center">
+      Board
+    </h3>
+  </header>
 
   <div class="d-flex flex-column align-items-center m-5">
-  <div class="d-flex gap-3">
-  <h3><%= link_to "Home", root_path %></h3>
-  <h3> < < </h3>
-  <h3>Board</h3>
-  </div>
-
   <%= render @board %>
   </div>
 </div>
