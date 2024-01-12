@@ -7,6 +7,8 @@ class Board < ApplicationRecord
   validates :mines_number, numericality: { greater_than_or_equal_to: 0 }
   validate :less_mines_than_board_area?
 
+  scope :recently_created, -> { order(created_at: :desc).limit(10) }
+
   private
 
   def less_mines_than_board_area?
