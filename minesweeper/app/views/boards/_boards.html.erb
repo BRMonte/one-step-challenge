@@ -1,0 +1,18 @@
+<table class="table m-5">
+  <thead class="thead-dark">
+    <tr>
+      <th>Name</th>
+      <th>Author email</th>
+      <th>Created At</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @boards.each do |board| %>
+      <tr>
+        <td><%= link_to board.name, board_path(board) %></td>
+        <td><%= board.email %></td>
+        <td><%= l(board.created_at, format: :short) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

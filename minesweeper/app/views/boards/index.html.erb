@@ -1,0 +1,13 @@
+<div class="boards-container d-flex flex-column align-items-center" style="margin-left: 600px">
+  <h1 class="m-5">
+    <%= link_to 'All boards', boards_path, class: 'm-5' %>
+  </h1>
+  <%= render 'layouts/partials/sorting-component' %>
+  <%= render 'layouts/partials/search-bar' %>
+  <%= render 'boards' %>
+  <div class="m-5 mt-0"><%= paginate @boards %></div>
+</div>
+
+
+
+
