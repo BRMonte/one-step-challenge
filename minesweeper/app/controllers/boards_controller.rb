@@ -2,8 +2,9 @@ class BoardsController < ApplicationController
   before_action :set_board, only: %i[show]
 
   def index
-    # @boards = Board.all
-    @boards = Board.page(params[:page]).per(10)
+    @boards = Board.search(params[:query])
+                   .page(params[:page])
+                   .per(10)
   end
 
   def show
@@ -30,6 +31,13 @@ class BoardsController < ApplicationController
   end
 
   def board_params
-    params.require(:board).permit(:name, :email, :height, :width, :mines_number)
+    params.require(:board).permit(
+                                  :name,
+                                  :email,
+                                  :height,
+                                  :width,
+                                  :mines_number,
+                                  :query
+                                )
   end
 end

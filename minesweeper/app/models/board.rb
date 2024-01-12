@@ -9,6 +9,12 @@ class Board < ApplicationRecord
 
   scope :recently_created, -> { order(created_at: :desc).limit(10) }
 
+  def self.search(search_param)
+    return Board.all unless search_param.present?
+
+    Board.where('name ~* :search_param OR email ~* :search_param', search_param: search_param)
+  end
+
   private
 
   def less_mines_than_board_area?

@@ -1,0 +1,6 @@
+<div class="search-box-container">
+  <%= form_with(url: boards_path, method: "get") do |form| %>
+    <%= form.text_field :query %>
+    <%= form.submit "Search" %>
+  <% end %>
+</div>
