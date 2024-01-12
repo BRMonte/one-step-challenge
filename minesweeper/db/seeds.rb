@@ -9,11 +9,13 @@
 #   end
 
 (1..20).each do |i|
+  alphabet = ('A'..'Z').to_a
+
   Board.new(
-    name: "Board ##{i}",
+    name: "Board #{alphabet.sample(2).join}",
     email: "email#{i}@gmail.com",
-    height: 10 + i,
-    width: 10 + i,
-    mines_number: 20 + i
+    height: i < 10 ? 2 * i : i + 4,
+    width: i < 10 ? 3 * i : 2 * i + 5,
+    mines_number: 2 * i
   ).save
 end
