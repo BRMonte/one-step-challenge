@@ -6,9 +6,11 @@
     </div>
 
     <div class="home-table d-flex flex-column">
-      <h4>10 most recent boards</h4>
+      <div class="d-flex justify-content-between">
+        <h4>10 most recent boards</h4>
+        <h6><%= link_to 'View all generated boards', boards_path %></h6>
+      </div>
       <%= render 'boards/boards' %>
-      <p><%= link_to 'View all generated boards', boards_path %></p>
     </div>
   </div>
 </div>

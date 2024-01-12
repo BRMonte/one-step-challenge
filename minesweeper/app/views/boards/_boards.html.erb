@@ -7,12 +7,16 @@
     </tr>
   </thead>
   <tbody>
-    <% @boards.each do |board| %>
-      <tr>
-        <td><%= link_to board.name, board_path(board) %></td>
-        <td><%= board.email %></td>
-        <td><%= l(board.created_at, format: :short) %></td>
-      </tr>
+    <% if @boards.present? %>
+      <% @boards.each do |board| %>
+        <tr>
+          <td><%= link_to board.name, board_path(board) %></td>
+          <td><%= board.email %></td>
+          <td><%= l(board.created_at, format: :short) %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <p class="m-3">No boards to show</p>
     <% end %>
   </tbody>
 </table>
