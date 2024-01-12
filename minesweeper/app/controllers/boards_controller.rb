@@ -18,6 +18,7 @@ class BoardsController < ApplicationController
     @board = Board.new(board_params)
 
     if @board.save
+      BoardMailer.board_generated_email(@board).deliver_now
       redirect_to board_url @board, notice: 'Successfully created.'
     else
       render :new, status: :unprocessable_entity
