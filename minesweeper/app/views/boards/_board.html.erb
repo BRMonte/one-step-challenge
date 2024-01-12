@@ -1,0 +1,23 @@
+<% if @board %>
+  <div class="d-flex">
+    <div class="d-flex flex-column gap-3 limited-width">
+      <p class="card-title">Name: <%= @board.name %></p>
+      <p class="card-text">Email: <%= @board.email %></p>
+      <p class="card-text">Height: <%= @board.height %></p>
+      <p class="card-text">Width: <%= @board.width %></p>
+      <p class="card-text">No. of mines: <%= @board.mines_number %></p>
+    </div>
+
+    <div class="minefield-container">
+      <%= render 'minefield' %>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+

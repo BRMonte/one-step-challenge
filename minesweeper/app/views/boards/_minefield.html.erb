@@ -1,0 +1,55 @@
+<div id="minesweeper-board" class="minesweeper-board" data-board-id="<%= @board.id %>">
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const boardContainer = document.getElementById('minesweeper-board');
+    const boardId = boardContainer.dataset.boardId;
+    const boardWidth = <%= @board.width %>;
+    const boardHeight = <%= @board.height %>;
+    const minesNumber = <%= @board.mines_number %>;
+
+    // Set container style
+    boardContainer.style.display = 'grid';
+    boardContainer.style.gridTemplateColumns = `repeat(${boardWidth}, 25px)`;
+    boardContainer.style.gridTemplateRows = `repeat(${boardHeight}, 25px)`;
+    boardContainer.style.gridGap = '2px';
+
+    // Generate cells and place mines
+    generateCellsAndPlaceMines();
+
+    function generateCellsAndPlaceMines() {
+      const allIndices = Array.from({ length: boardWidth * boardHeight }, (_, index) => index);
+      const shuffledIndices = shuffleArray(allIndices);
+      const mineIndices = shuffledIndices.slice(0, minesNumber);
+
+      for (let row = 0; row < boardHeight; row++) {
+        for (let col = 0; col < boardWidth; col++) {
+          const cellElement = document.createElement('div');
+          cellElement.style.width = '25px'; // Adjusted width
+          cellElement.style.height = '25px'; // Adjusted height
+          cellElement.style.border = '1px solid black'; // Black border
+          cellElement.style.backgroundColor = '#eee';
+
+          // Check if the current cell is a mine
+          const isMine = mineIndices.includes(row * boardWidth + col);
+          if (isMine) {
+            cellElement.dataset.mine = 'true';
+            // Set styling for mines (e.g., change background color)
+            cellElement.style.backgroundColor = 'red';
+          }
+
+          boardContainer.appendChild(cellElement);
+        }
+      }
+    }
+
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+  });
+</script>
