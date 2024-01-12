@@ -3,8 +3,9 @@ class BoardsController < ApplicationController
 
   def index
     @boards = Board.search(params[:query])
-                   .page(params[:page])
-                   .per(10)
+    @boards = sort_boards(@boards)
+
+    @boards = @boards.page(params[:page]).per(10)
   end
 
   def show
@@ -27,18 +28,31 @@ class BoardsController < ApplicationController
 
   private
 
+  def sort_boards(boards)
+    case params[:sort]
+    when "by_size"
+      boards.order_by_size
+    when "by_name"
+      boards.order_by_name
+    when "by_difficulty"
+      boards.order_by_difficulty
+    else
+      boards
+    end
+  end
+
   def set_board
     @board = Board.find(params[:id])
   end
 
   def board_params
     params.require(:board).permit(
-                                  :name,
-                                  :email,
-                                  :height,
-                                  :width,
-                                  :mines_number,
-                                  :query
-                                )
+      :name,
+      :email,
+      :height,
+      :width,
+      :mines_number,
+      :query
+    )
   end
 end

@@ -1,0 +1,8 @@
+<div class="dropdown">
+  <button class="dropbtn">Sort by</button>
+  <div class="dropdown-content">
+    <%= link_to "biggest to smallest", boards_path(sort: "by_size") %>
+    <%= link_to "hardest to easiest", boards_path(sort: "by_difficulty") %>
+    <%= link_to "Alphabetically", boards_path(sort: "by_name") %>
+  </div>
+</div>

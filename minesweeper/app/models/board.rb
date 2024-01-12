@@ -10,6 +10,10 @@ class Board < ApplicationRecord
   after_validation :set_slug, only: [:create]
 
   scope :recently_created, -> { order(created_at: :desc).limit(10) }
+  scope :order_by_name, -> { order(name: :asc) }
+  scope :order_by_size, -> { order(Arel.sql('height * width DESC')) }
+  scope :order_by_difficulty, -> { order(Arel.sql('height * width / mines_number DESC')) }
+
 
   def self.search(search_param)
     return Board.all unless search_param.present?
