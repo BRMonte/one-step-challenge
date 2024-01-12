@@ -28,12 +28,16 @@ class Board < ApplicationRecord
   private
 
   def less_mines_than_board_area?
+    return unless [height, width, mines_number].all?(&:present?)
+
     return if mines_number <= height * width
 
     errors.add(:mines_number, 'must be less than the area of the board')
   end
 
   def set_slug
+    return unless name.present?
+
     self.slug = name.parameterize
   end
 end
