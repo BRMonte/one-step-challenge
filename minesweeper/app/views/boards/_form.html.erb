@@ -1,0 +1,32 @@
+<%= form_for(@board) do |f| %>
+	<div class="form-group w-75">
+		<%= f.label :email, "Email" %>
+		<%= f.email_field :email, class: 'form-control' %>
+	</div>
+
+	<div class="form-group w-75">
+		<%= f.label :name, "Name" %>
+		<%= f.text_field :name, class: 'form-control' %>
+	</div>
+
+	<div class="form-group mt-3 w-75 h-25 d-flex gap-3">
+    <div class="d-flex flex-column">
+      <%= f.label :height, "Height" %>
+      <%= f.number_field :height, value: 2, class: 'form-control', min: 2 %>
+    </div>
+
+    <div>
+      <%= f.label :width, "Width" %>
+      <%= f.number_field :width, value: 2, class: 'form-control', min: 2 %>
+    </div>
+
+    <div>
+      <%= f.label :mines_number, "No. of mines" %>
+      <%= f.number_field :mines_number, value: 0, class: 'form-control', min: 0 %>
+    </div>
+
+    <div class="mt-4">
+      <%= f.submit "Save", class: 'btn btn-success' %>
+    </div>
+	</div>
+<% end %>
