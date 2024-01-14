@@ -1,6 +1,6 @@
 class BoardGeneratorService
   MINE = 'x'
-  EMPTY = 0
+  EMPTY = nil
 
   def initialize(board)
     @height = board.height
